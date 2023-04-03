@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>community2</label>
+    <license>Customer Community</license>
+    <tabSettings>
+        <tab>standard-File</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

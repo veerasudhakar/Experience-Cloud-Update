@@ -1,0 +1,26 @@
+<template>
+    <div >
+    <lightning-card  >
+        <div class="slds-align_absolute-center " style="height:5rem">
+        <img style="max-height: 400px" alt="Image on T.O." src={torontoImage}/>
+    </div>
+    <div class="containerOver  slds-align_absolute-center slds-text-heading_large" style="height:5rem">  
+        <h3 class="slds-text-heading_medium"> <strong style="font-size:25px;"> Welcome to Our Site </strong></h3>
+    </div>
+    
+
+    <div style="text-align:center" >
+        
+        Open to transitioning Service members (including National Guard and Reserve) and their spouses. 
+                    Contact the transition office on your military installation to register.
+                
+                </div>
+            
+            <div class="slds-align_absolute-center" style="height:5rem">
+                <lightning-button variant="destructive" label="Class Details|Schedule" title="Click to Open" onclick={handleLWCNavigate} class="slds-m-left_x-small"></lightning-button>
+            </div>
+           <!--<c-calendar-newone template if:true={veeran}></c-calendar-newone>-->
+           <!-- <c-veeran-calender-new  template if:true={veeran}> </c-veeran-calender-new> -->
+    </lightning-card>
+    </div>
+</template>

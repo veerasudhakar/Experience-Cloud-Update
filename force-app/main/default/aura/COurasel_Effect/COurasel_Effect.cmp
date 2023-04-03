@@ -1,0 +1,31 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <!--Component Start-->
+    <div style="height:100px;">
+    <div class="slds-p-around--med ">
+        
+        <lightning:carousel disableAutoRefresh="true">
+            
+            <lightning:carouselImage 
+                                     src="{!$Resource.banner}"
+                                     description = "Learn how to write a job description to attract qualified candidates. Find info on job titles, qualifications, skills and specific job description examples."
+                                     alternativeText = "First Image Description."
+                                     href="https://in.indeed.com/" >
+            </lightning:carouselImage>
+            <lightning:carouselImage 
+                                     src="{!$Resource.naukari}"
+                                     description = "Naukri.com is a recruitment platform that provides hiring-related services to corporates/recruiters, placement agencies and to job seekers in India and overseas"
+                                     alternativeText = "Second Image Description"
+                                     href="https://www.naukri.com/">
+            </lightning:carouselImage>
+            <lightning:carouselImage 
+                                     src="{!$Resource.linkedin}"
+                                     description = "A LinkedIn summary is the “about” section on your LinkedIn page, a space where you can highlight your professional experience"
+                                     alternativeText = "Third Image Description."
+                                     href="https://in.linkedin.com/">
+            </lightning:carouselImage>
+                
+        </lightning:carousel>
+            
+    </div>
+        </div>
+</aura:component>

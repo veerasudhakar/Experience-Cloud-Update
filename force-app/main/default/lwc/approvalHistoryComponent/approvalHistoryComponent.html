@@ -1,0 +1,25 @@
+<template>
+    <lightning-card >
+        <lightning-layout>
+            
+            <lightning-layout-item size="3">
+                <lightning-button label="Approval History" onclick={PythonHandler} variant="brand"></lightning-button>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+
+        
+ 
+          <template if:true={customer}>
+            <lightning-datatable
+                key-field="id"
+                data={customer}
+                hide-checkbox-column
+                columns={col1}>
+            </lightning-datatable>
+      </template>
+ 
+      
+          
+    </lightning-card>
+</template>

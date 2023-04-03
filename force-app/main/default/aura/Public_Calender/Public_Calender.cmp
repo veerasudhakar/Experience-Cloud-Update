@@ -1,0 +1,26 @@
+<aura:component controller="CalendarController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+    <aura:attribute name="events" type="Event[]" default="[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.getEvents}"/>
+    <div class="slds-page-header">
+        <h1 class="slds-page-header__title">Community Calendar</h1>
+    </div>
+    <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+        <thead>
+            <tr class="slds-text-title_caps">
+                <th scope="col"><span class="slds-truncate">Program_Date__c</span></th>
+                <th scope="col"><span class="slds-truncate">Faculty_Name__c</span></th>
+             <!--   <th scope="col"><span class="slds-truncate">End Time</span></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.events}" var="event">
+                <tr>
+              <!--      <td data-label="Subject"><a href="{!'/event/' + event.Id}">{!event.Subject}</a></td> -->
+                    <td data-label="Program_Date__c">{!event.Program_Date__c}</td>
+                    <td data-label="Faculty_Name__c">{!event.Faculty_Name__c}</td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

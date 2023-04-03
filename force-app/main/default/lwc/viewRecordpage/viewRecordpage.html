@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Program Detail Page">
+            <lightning-layout>
+                <lightning-layout-item>
+                    <lightning-record-view-form
+                        onload={handlerecordloaded} record-id={recordId} object-api-name="Program__c" density="compact">
+                        <lightning-output-field field-name="nameField"></lightning-output-field>
+                        
+                    <lightning-output-field field-name="OwnerId"></lightning-output-field>
+           <lightning-output-field field-name="LastModifiedById"></lightning-output-field>
+                    </lightning-record-view-form>
+                </lightning-layout-item>
+            </lightning-layout>
+    </lightning-card>
+</template>

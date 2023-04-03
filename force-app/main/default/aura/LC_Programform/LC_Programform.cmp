@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<lightning:recordEditForm aura:id="recordEditForm" objectApiName="Program__c"
+                              onerror="{!c.handleError}" onsuccess="{!c.cersub}">
+        
+        <center>
+            <div style="font-size: 20px;">  New Form </div>
+        </center>
+        <lightning:card>
+            <lightning:inputField fieldName="Name" />
+            <lightning:inputField fieldName="Faculty_Name__c" />
+            <lightning:inputField fieldName="Program_Date__c" />
+            <lightning:inputField fieldName="Program_Time__c" />
+            <lightning:inputField fieldName="Program_Type__c" />
+             <lightning:inputField fieldName="Contact__c" />
+            <lightning:inputField fieldName="Owner" />
+            <lightning:inputField fieldName="CreatedById" />
+            <lightning:inputField fieldName="LastModifiedById" />
+        </lightning:card>
+        <lightning:button type="submit" variant="brand" name="Submit" label="Save" class="slds-m-top_medium"/>
+    </lightning:recordEditForm>
+</aura:component>

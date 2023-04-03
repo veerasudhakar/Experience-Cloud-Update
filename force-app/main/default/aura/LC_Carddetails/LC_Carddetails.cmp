@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!--<lightning:card>
+   
+        <img src="{!$Resource.indeed}" alt="User avatar"/>
+        
+    
+    
+        Boots to Business
+
+
+Open to transitioning Service members (including National Guard and Reserve) and their spouses. 
+        Contact the transition office on your military installation to register.
+    
+   
+    
+    <lightning:button variant="base" label="Register" title="Base action" onclick="{! c.handleClick }"/>
+        
+    </lightning:card>-->
+    
+</aura:component>

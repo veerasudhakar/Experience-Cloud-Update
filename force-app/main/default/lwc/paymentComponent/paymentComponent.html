@@ -1,0 +1,79 @@
+<template> 
+  <lightning-card title="Payment Method">
+    <!-- <lightning-button label="Back" slot="actions" onclick={navigateToCart}  variant="brand"></lightning-button> -->
+ 
+        <lightning-layout multiple-rows style="height:500px; background:beige;">
+            <lightning-layout-item size="2" style="padding-left: 15px;">
+              <lightning-combobox
+              name="Status"
+              
+              value={selectedstatus}
+              placeholder="Select status"
+              options={statusOptions}   
+              class="button"           
+              onchange={handleChange2} ></lightning-combobox>
+            </lightning-layout-item >
+            <template if:true={isCard}>
+              <lightning-layout-item size="8" > 
+               
+                <div style="width:450px;padding-left:15px;padding: 15px;border:1px solid;margin-left:200px;margin-top:100px;background:#e7ebe1;">
+                <div><lightning-input type="text"  class="validate" value={cardNo} placeholder="Card Number" required max-length="16" onchange={handleChange3}></lightning-input></div>
+                <div><lightning-input type="text"  class="validate" value={cardName} placeholder="Your Name" required max-length="30" onchange={handleChange4}></lightning-input></div>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_2-of-3">
+                        <div style="float: left;padding-right: 15px;">
+                        <lightning-combobox
+                        class="validate"
+                        required 
+                        value={valueMM}
+                        placeholder="MM"
+                        options={options}
+                        
+                        onchange={handleChange} ></lightning-combobox>
+                        </div>
+                        <div style="float: left;padding-right: 15px;">  
+                        <lightning-combobox
+                        class="validate"
+                        required 
+                        value={valueYY}
+                        placeholder="YY"
+                        options={options1}
+                        
+                        onchange={handleChange1} ></lightning-combobox>
+                    </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-input type="password"  class="validate"
+                        required value={cardCvv} placeholder="CVV"  max-length="3" onchange={handleChange5}></lightning-input>
+                    </div>
+                  </div>
+                  <div style="padding-top:15px;">
+                    <lightning-button label="Pay & Order Now" onclick={applyHandler} style="padding-right: 15px;" variant="brand"></lightning-button>
+                    <lightning-button label="Back" onclick={navigateToCart}  variant="brand"></lightning-button>
+                  </div>
+                </div>
+               
+              </lightning-layout-item>
+             
+              <lightning-layout-item size="2"></lightning-layout-item>
+            </template>
+            <template if:true={isUPI}>
+                <div style="padding: 15px;border:1px solid;margin-left:200px;margin-top:100px;background:#e7ebe1;">
+                <lightning-input type="text" label="Enter UPI Id" value={cardUpi} placeholder="xxxxxxxxxx@axl" max-length="14" style="width: 200px;" onchange={handleChange6} ></lightning-input>
+                
+                    <lightning-button label="Pay & Order Now" onclick={applyHandler} style="padding-top: 15px;float:left" variant="brand"></lightning-button>
+                    <lightning-button label="Back" onclick={navigateToCart} style="padding-top: 15px;float:right;" variant="brand"></lightning-button>
+                </div>
+            </template>
+            <template if:true={isCOD}>
+              <div style="padding: 15px;border:1px solid;margin-left:200px;margin-top:100px;background:#e7ebe1;">
+                <p><b>At the time of Delivery, You need Pay Cash </b></p>
+                <div>
+                <lightning-button label="Order Now" onclick={applyHandler} style="padding-top: 15px;float:left;padding-right:10px;" variant="brand"></lightning-button>
+                <lightning-button label="Back" onclick={navigateToCart} style="padding-top: 15px;float:left;" variant="brand"></lightning-button>
+              </div>
+            </div>
+            </template>
+            </lightning-layout>
+          </lightning-card>
+</template>

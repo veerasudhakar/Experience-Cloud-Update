@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingGuestRules>
+        <fullName>Contact_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Contact Sharing</label>
+        <sharedTo>
+            <guestUser>Customer_New_Portal</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>FirstName</field>
+            <operation>equals</operation>
+            <value>Chandu</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>LastName</field>
+            <operation>equals</operation>
+            <value>Battu</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>true</includeHVUOwnedRecords>
+    </sharingGuestRules>
+    <sharingGuestRules>
+        <fullName>name</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>name</label>
+        <sharedTo>
+            <guestUser>Customer_New_Portal</guestUser>
+        </sharedTo>
+        <criteriaItems>
+            <field>LastName</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <includeHVUOwnedRecords>false</includeHVUOwnedRecords>
+    </sharingGuestRules>
+</SharingRules>

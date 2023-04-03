@@ -1,0 +1,18 @@
+<template>
+    <lightning-card>
+        <lightning-layout>
+         <lightning-layout-item size="3">
+        <lightning-button label="Register" onclick={JavaHandler} variant="brand"></lightning-button>
+         </lightning-layout-item>
+   
+    </lightning-layout>
+    <template if:true={prospect}>
+        <lightning-datatable
+            key-field="id"
+            data={prospect}
+            hide-checkbox-column
+            columns={col1}>
+        </lightning-datatable>
+  </template>
+    </lightning-card>
+</template>

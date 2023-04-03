@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>Customer Portal</container>
+    <containerType>Network</containerType>
+    <label>Program offerings</label>
+    <navigationMenuItem>
+        <label>Salesforce</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>https://www.salesforce.com/in/services/learn/overview/</target>
+        <targetPreference>OpenExternalLinkInSameTab</targetPreference>
+        <type>ExternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Python</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>https://in.coursera.org/courses?query=python</target>
+        <targetPreference>OpenExternalLinkInSameTab</targetPreference>
+        <type>ExternalLink</type>
+    </navigationMenuItem>
+</NavigationMenu>

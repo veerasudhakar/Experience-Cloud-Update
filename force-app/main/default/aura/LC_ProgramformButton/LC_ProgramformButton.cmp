@@ -1,0 +1,78 @@
+<aura:component controller="HideLoginButton" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    
+    
+    <aura:attribute name="hidebutton" type="boolean" default="true"/>
+    
+    <aura:attribute name="userdata" type="object"/>
+    
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="isModalOpen1" type="boolean" default="false"/>
+    
+    <aura:attribute name="url" type="String"/>
+    <aura:attribute name="pageReference" type="Object"/>
+   <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <lightning:navigation aura:id="navService"/>
+   <!-- <a href="{!v.url}">Register</a>-->
+    
+	<!--<lightning:button variant="brand" label="Register" title="Base action" onclick="{! c.navigate }"/>-->
+    
+     
+    <!--<c:recordsOfSalesforce/>-->
+   
+    <div class="chat-text" aura:id="toggle1">
+        <c:programNames/>
+    </div>
+    <!--<div>
+    <aura:if isTrue="{!v.isModalOpen1}">
+        <c:recordsOfSalesforce/>
+    </aura:if>
+        </div>-->
+    
+       <div class="chat-start" aura:id="toggle2">
+               <lightning:button variant="brand"
+                          label="Register Now for the course"
+                          onclick="{! c.openModel }" />
+    </div>
+        <!--Use aura:if tag to display/hide popup based on isModalOpen value--> 
+    
+        <aura:if isTrue="{!v.isModalOpen}">
+             
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Registration Pop Up</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b>Please register yourself by clicking on login/register here button in the home page if you are not a member of this site. Click OK and register by clicking on login button and enter your credentials if you are already a menber of this site. Thankyou. 
+                            </b>
+                        </p>
+                    </div>
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral"
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                        <lightning:button variant="brand"
+                                          label="OK"
+                                          onclick="{!c.navigate1}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            
+        </aura:if>
+   
+    
+    
+    <!--<lightning:button variant="brand" label="Register1S" title="Base action" onclick="{! c.navigate3 }"/>-->
+    
+</aura:component>

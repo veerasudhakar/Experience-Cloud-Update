@@ -1,0 +1,9 @@
+<template>
+    <lightning-card>
+        <template if:true={columns}>
+            <lightning-checkbox-group label="Select columns to display" options={columnOptions} value={selectedColumns}
+                onchange={handleCheckboxChange}></lightning-checkbox-group>
+            <lightning-datatable data={data} columns={tableColumns}></lightning-datatable>
+        </template>
+    </lightning-card>
+</template>

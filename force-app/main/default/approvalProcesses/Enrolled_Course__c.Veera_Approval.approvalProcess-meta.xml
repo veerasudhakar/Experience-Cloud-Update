@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>veeran@gmail.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Step 1</label>
+        <name>Step_1</name>
+    </approvalStep>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <finalApprovalActions>
+        <action>
+            <name>Veera_Approval</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Veera_Final_Action</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Veera_Rejected_Action</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Veera_Intial</name>
+            <type>Alert</type>
+        </action>
+        <action>
+            <name>Veera_Pending</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Veera Approval</label>
+    <processOrder>4</processOrder>
+    <recordEditability>AdminOnly</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

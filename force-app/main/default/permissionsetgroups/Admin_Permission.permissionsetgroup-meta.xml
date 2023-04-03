@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>true</hasActivationRequired>
+    <label>Admin Permission</label>
+    <mutingPermissionSets>Admin_Permission_Muted</mutingPermissionSets>
+    <permissionSets>force__B2BBuyer</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

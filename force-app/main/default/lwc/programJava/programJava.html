@@ -1,0 +1,19 @@
+<template>      
+    <lightning-card title="Click on enroll to register for the course" icon-name="standard:outcome">  
+        <div class="slds-m-around_medium">  
+            <template if:true={availableAccounts}>      
+                <lightning-datatable
+                    key-field="Id"
+                    data={availableAccounts}
+                    columns={columns}
+                    onrowaction={callRowAction}
+                    hide-checkbox-column="true"
+                    show-row-number-column="true">
+                </lightning-datatable>  
+            </template>      
+            <template if:true={error}>  
+                {error}>                  
+            </template>  
+        </div>  
+    </lightning-card>
+</template>

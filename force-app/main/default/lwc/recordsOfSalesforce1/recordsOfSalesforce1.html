@@ -1,0 +1,28 @@
+<template>
+	<!--<lightning-card title="Hello"> <br/>
+		<div style="width: auto;">
+			<template if:true={data}>
+				<lightning-datatable data={data} columns={columns} key-field="id" hide-checkbox-column="true"
+					onrowaction={handleRowActions}></lightning-datatable>
+			</template>
+		</div>-->
+
+		<!-- Spinner -->
+		<!--<div if:true={showLoadingSpinner}>
+			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+		</div>
+	</lightning-card>-->
+
+    
+        <!--<lightning-card  title="Opportinity List">
+            <lightning-datatable data={opportunities} columns={columns} key-field="Id"></lightning-datatable>        
+        </lightning-card> -->
+        <lightning-card title="All the Details Based on Program Type">
+        <lightning-layout>
+            <lightning-layout-item size="3">
+           <lightning-button label="Register" onclick={SalesforceHandler} variant="brand"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+        </lightning-card>
+
+ </template>
