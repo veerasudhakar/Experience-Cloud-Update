@@ -1,0 +1,58 @@
+<template>
+ <div class="slds-col slds-size_1-of-1 row region-header">
+            <div class="highlights slds-clearfix slds-page-header slds-page-header_record-home fixed-position"
+                    style="
+                      height: 67.5px;
+                      left: 11px;
+                      right: 12px;
+                      padding-left: 17px;
+                      padding-right: 17px;
+                      border-radius: 4px;
+                      transform: translate3d(0px, -1px, 0px);
+                    "
+                  >
+                    <div class="slds-grid primaryFieldRow">
+                      <div class="slds-grid slds-col slds-has-flexi-truncate">
+                        <div class="slds-media slds-no-space">
+                          <div class="highlights-icon-container slds-avatar slds-m-right_small icon"
+                                style="background-color: #6b92dc">
+                                <lightning-icon
+      icon-name="standard:knowledge"
+      alternative-text="Program"
+      title="Program"
+    >
+    </lightning-icon>
+                            </div>
+                        </div>
+                        <div class="slds-media__body">
+                          <h1 records-highlights2_highlights2="">
+                            <div class="entityNameTitle slds-line-height--reset">
+                              Program
+                            </div>
+                            <slot
+                              records-highlights2_highlights2=""
+                              class="slds-page-header__title slds-m-right--small slds-align-middle clip-text slds-line-clamp"
+                              name="primaryField">
+                              <lightning-formatted-text slot="primaryField" value={name}>
+                                </lightning-formatted-text>
+                                </slot>
+                                <slot name="versionMarker"></slot>
+                          </h1>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+                         <!-- <lightning-card>
+    <lightning-icon
+      icon-name="standard:knowledge"
+      alternative-text="Program"
+      title="Program"
+    >
+    </lightning-icon>
+    <p></p>
+  </lightning-card> -->
+
+  
+                        </template>

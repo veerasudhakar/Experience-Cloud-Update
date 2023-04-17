@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-form">
+        <div class="slds-form-element">
+            <label class="slds-form-element__label" for="feedback">Feedback</label>
+            <div class="slds-form-element__control">
+                <textarea id="feedback" name="feedback" class="slds-textarea" value={feedback} onchange={handleFeedbackChange}></textarea>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <label class="slds-form-element__label">Rating</label>
+            <div class="slds-form-element__control">
+                <template for:each={ratingOptions} for:item="ratingOption">
+                    <label key={ratingOption} class="slds-radio">
+                        <input type="radio" name="rating" value={ratingOption} onchange={handleRatingChange} />
+                        <span class="slds-radio_faux"></span>
+                        <span class="slds-form-element__label">{ratingOption}</span>
+                    </label>
+                </template>
+            </div>
+        </div>
+        <div class="slds-form-element">
+            <button class="slds-button slds-button_brand" onclick={handleSubmit}>Submit Feedback</button>
+        </div>
+    </div>
+</template>

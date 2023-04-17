@@ -19,11 +19,24 @@ const columns = [
         variant:'brand' ,
         disabled:{ fieldName:'IsActive'},
         value: 'Enroll',  
-        iconPosition: 'left'  
-    } }
+        iconPosition: 'left',  
+        //recordPageUrl
+    //     connectedCallback() {
+    //         this.communityPage = {
+    //             type: 'standard__webPage',
+    //             attributes: {
+    //                 url: 'https://wissen-2e-dev-ed.develop.my.site.com/CustomerNewPortal1/s/salesforce'
+    //             },
+    //             state: {
+    //                 inputParameter : 'CustomerNewPortal1'
+    //             }
+    //         };
+    //}
+
+     } 
 
   
-  ];
+  }];
   
 
 export default class programJava extends LightningElement {
