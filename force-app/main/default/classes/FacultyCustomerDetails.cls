@@ -55,4 +55,14 @@ a.Present__c=true;
 a.Enrolled_Course__c=EId;
 insert a;
     }
+    @AuraEnabled(Cacheable = true)
+    public static list<Enrolled_Course__c> getAccountData(String textkey) {
+        textkey = '%' + textkey + '%';
+        list<Enrolled_Course__c> accLst = [SELECT Id, Name,Attendence__c, Contact__r.Name, Program__c,Program__r.Course__r.Name,Email__c,Status__c FROM Enrolled_Course__c WHERE Program__r.Course__r.Name LIKE :textkey];
+        
+        if(accLst.isEmpty()) {
+            throw new AuraHandledException('No Record Found..');
+        }
+        return accLst; 
+    }
 }

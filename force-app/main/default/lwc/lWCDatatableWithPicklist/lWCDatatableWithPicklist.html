@@ -1,27 +1,59 @@
 <template>
-  
-    <lightning-card  variant="Narrow"  title="Attendence Table" icon-name="standard:folder" class="cardSpinner">
-        <!-- loader -->
-        <div if:true={showSpinner}>
-            <lightning-spinner
-                alternative-text="Loading..." variant="brand">
-            </lightning-spinner>
-        </div>
-        <!-----/loader-------->
-        <div class="slds-var-p-around_small">
-            <template if:true={data}>
-                <c-l-w-c-custom-datatable-type
-                    key-field="Id"
-                    data={data} 
-                    columns={columns} 
-                    onvalueselect={handleSelection}
-                    draft-values={draftValues} 
-                    oncellchange={handleCellChange}
-                    onsave={handleSave}
-                    oncancel={handleCancel}
-                    hide-checkbox-column>
-                </c-l-w-c-custom-datatable-type>
-            </template>
-        </div>
+  <lightning-card
+    variant="Narrow"
+    title="Attendence Table"
+    icon-name="standard:folder"
+    class="cardSpinner"
+  >
+    <!-- loader -->
+    <div if:true={showSpinner}>
+      <lightning-spinner alternative-text="Loading..." variant="brand">
+      </lightning-spinner>
+    </div>
+
+    <lightning-card title="Course Search">
+      <lightning-layout multiple-rows="true" vertical-align="end">
+        <lightning-layout-item size="4" padding="around-small">
+          <!--Input text to Search Account-->
+          <lightning-input
+            type="text"
+            label="Enter Course Name To Search"
+            value={searchKey}
+            onchange={handelSearchKey}
+          >
+          </lightning-input>
+        </lightning-layout-item>
+
+        <!-- <lightning-layout-item size="2" padding="around-small">
+                  
+                    <lightning-button label="Search" variant="brand" onclick={SearchAccountHandler}>
+    
+                    </lightning-button>
+                </lightning-layout-item> -->
+        <!-- <lightning-layout-item size="12" padding="around-small">
+                    
+                    <lightning-datatable key-field="id" data={EnrolledCourses} columns ={cols}> 
+    
+                    </lightning-datatable>
+                </lightning-layout-item> -->
+      </lightning-layout>
     </lightning-card>
+    <!-----/loader-------->
+    <div class="slds-var-p-around_small">
+      <template if:true={data}>
+        <c-l-w-c-custom-datatable-type
+          key-field="Id"
+          data={data}
+          columns={columns}
+          onvalueselect={handleSelection}
+          draft-values={draftValues}
+          oncellchange={handleCellChange}
+          onsave={handleSave}
+          oncancel={handleCancel}
+          hide-checkbox-column
+        >
+        </c-l-w-c-custom-datatable-type>
+      </template>
+    </div>
+  </lightning-card>
 </template>
