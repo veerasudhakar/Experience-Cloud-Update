@@ -66,6 +66,7 @@
 </div>
                 <!-- fullcalendar sits in this div -->
                 <div id="calendar" class="fullcalendarjs"></div>
+                
         </div>
    </div>
 
@@ -94,47 +95,26 @@
                 </header>
                 <div class="slds-modal__content slds-p-around_medium"
                     id="modal-content-id-1">
-       <!--lightning-record-form
-        object-api-name="Program__c"
-        fields={fields}
-        onsubmit={handleSubmit}
-        onsuccess={handleSuccess}>
-    </lightning-record-form-->
+      ]
 
                     <div>
                          <lightning-record-edit-form object-api-name="Program__c">
-    <!-- <lightning-input-field field-name="Course__c" variant="label-inline"></lightning-input-field> -->
+    
     <lightning-input-field class="course" field-name="Course__c" variant="label-inline"></lightning-input-field>
   </lightning-record-edit-form>
-                        <!-- <lightning-combobox
-                        label="Title"
-                        value={selectedTitle}
-                        options={TitleTypeOptions}
-                        onchange={handleProductChange1}>
-                </lightning-combobox> -->
+                        
                         <lightning-combobox
                         label="Program Type"
                         value={selectedProgramType}
                         options={ProgramTypeOptions}
                         onchange={handleProductChange}>
                 </lightning-combobox>
-                    <!--lightning-input label="Title" name="title" type="text" required onkeyup={handleKeyup}></lightning-input-->
-                     <!--<lightning-input label="Email" name="Email" type="text" required value={Email}></lightning-input>-->
-                     <!-- <lightning-record-edit-form object-api-name="Program__c">
-    
-    <lightning-input-field class="contact" field-name="Contact__c" variant="label-inline"></lightning-input-field>
-  </lightning-record-edit-form> -->
+                   
                     <lightning-input label="ProgramDate" name="ProgramDate" type="datetime" required value={ProgramDate}></lightning-input>
                     <lightning-input label="ProgramEndDate" name="ProgramEndDate" type="datetime" required value={ProgramEndDate}></lightning-input>
                    
                     
-                    <!--div class="slds-box">
-                        <template if:true={ProgramType.data}>
-                            <lightning-combobox name="progress" label="ProgramType" value={value}
-                                options={ProgramType.data.values} onchange={handleChange}>
-                            </lightning-combobox>
-                        </template>
-                    </div-->
+                   
                 </div>
                 </div>
                 <footer class="slds-modal__footer">

@@ -50,7 +50,7 @@ const columns = [
 
 export default class CustomDatatableDemo extends LightningElement {
   searchKey;
-  @track EnrolledCourses;
+  //@track EnrolledCourses;
   columns = columns;
   showSpinner = false;
   @track data = [];

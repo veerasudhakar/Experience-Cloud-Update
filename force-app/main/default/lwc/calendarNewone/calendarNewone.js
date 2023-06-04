@@ -1,4 +1,7 @@
 import { LightningElement ,track, wire } from 'lwc';
+
+import { NavigationMixin } from 'lightning/navigation';
+
 import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import FullCalendarJS from '@salesforce/resourceUrl/FullCalendarJS';
@@ -13,7 +16,7 @@ import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import TYPE from "@salesforce/schema/Program__c.Program_Type__c";
 import PROGRAM_OBJECT from "@salesforce/schema/Program__c";
 
-export default class CalendarNewone extends LightningElement {
+export default class CalendarNewone extends NavigationMixin(LightningElement) {
      ProgramEndDate;
     ProgramDate;
     ProgramType;
@@ -28,13 +31,7 @@ export default class CalendarNewone extends LightningElement {
         { label: 'Hybrid', value: 'Hybrid' },
         { label: 'Online', value: 'Online' }
     ];
-    // TitleTypeOptions = [
-    //     { label: 'Salesforce', value: 'Salesforce' },
-    //     { label: 'Amazon Web Services', value: 'Amazon Web Services' },
-    //     { label: 'Java', value: 'Java' },
-    //     { label: 'Python', value: 'Python' },
-    //     { label: 'Devops', value: 'Devops' }
-    // ];
+    
     isFaculty
     options =[
         { label: 'All', value: 'All' },
@@ -62,28 +59,10 @@ export default class CalendarNewone extends LightningElement {
     }
     handleProgram(event)
     {
+               
 this.selectedProgram=event.target.value
-//this.fectPrograms();
+
     }
-
-    /* @wire(getObjectInfo,{objectApiName:PROGRAM_OBJECT})
- objectInfo
- 
-@wire(getPicklistValues,{recordTypeId:'$objectInfo.data.defaultRecordTypeId',fieldApiName:TYPE})
- PicklistValues({data,error})
- {
- if(data)
- {
- console.log('type',data)
- this.ProgramTypeOptions=[...this.getProgramType(data)]
- }
- if(error)
- {
- console.error('type error',error)
- }
- }
- */
-
 
  getProgramType(data)
  {
@@ -97,13 +76,7 @@ this.selectedProgram=event.target.value
  {
 this.selectedProgramType=event.target.value
  }
-//  lookup(){
-//      console.log('lookup...'+event.target.value)
-//  }
- 
-//  handleProductChange1(event){
-//      this.selectedTitle=event.target.value
-//  }
+
     fullCalendarJsInitialised = false;
    
 
@@ -111,60 +84,29 @@ this.selectedProgramType=event.target.value
     //@track fields
     //title;
    
-    eventsRendered = false;//To render initial events only once
+    eventsRendered = true;//To render initial events only once
     openSpinner = false; //To open the spinner in waiting screens
     openModal = false; //To open form
 
     @track
-    events = []; //all calendar events are stored in this field
+    events= []; //all calendar events are stored in this field
 
     //To store the orignal wire object to use in refreshApex method
     eventOriginalData = [];
-    /*fectPrograms()
-    {
-        fetchEvents({programType:this.selectedProgram}).then(result=>{
-                //format as fullcalendar event object
-                console.log('result',result);
-                let events = result.map(event => {
-                    return { id : event.Id, 
-                            title : event.Name, 
-                            start : event.Program_Date__c,
-                            end : event.Program_End_Date__c
-                           };
-                });
-                this.events = JSON.parse(JSON.stringify(events));
-                console.log('this.events',this.events);
-               // this.events = JSON.parse(JSON.stringify(events));
-                this.error = undefined;
     
-                //load only on first wire call - 
-                // if events are not rendered, try to remove this 'if' condition and add directly 
-                if(! this.eventsRendered){
-                    //Add events to calendar
-                    const ele = this.template.querySelector("div.fullcalendarjs");
-                    $(ele).fullCalendar('renderEvents', this.events, true);
-                    this.eventsRendered = true;
-                }
-            }).catch(error=>{
-                this.events = [];
-                this.error = 'No events are found';
-                            console.log('error',error);
-    
-            })
-
-        
-    }*/
     //Get data from server - in this example, it fetches from the event object
+ 
     @wire(fetchEvents,{programType:'$selectedProgram'})
     eventObj(value){
-        this.eventOriginalData = value; //To use in refresh cache
-
-        const {data, error} = value;
+        // this.eventOriginalData = value; //To use in refresh cache
+console.log(value)
+        let {data, error} = value;
         if(data){
-            this.events=[]
+            // this.events=[]
             //format as fullcalendar event object
             console.log('data',data);
             let events = data.map(event => {
+                console.log(event)
                 return { id : event.Id, 
                         title : event.Name, 
                         start : event.Program_Date__c,
@@ -172,22 +114,39 @@ this.selectedProgramType=event.target.value
                        
                        };
             });
+            console.log(events)
             this.events = JSON.parse(JSON.stringify(events));
+
+            // this.events = JSON.parse(events)
             console.log('this.events',this.events);
            // this.events = JSON.parse(JSON.stringify(events));
             this.error = undefined;
 
             //load only on first wire call - 
             //if events are not rendered, try to remove this 'if' condition and add directly 
-           if(! this.eventsRendered){
-                //Add events to calendar
-                const ele = this.template.querySelector("div.fullcalendarjs");
-                //ele.clear()
+            // console.log(this.eventsRendered)
+  let ele = this.template.querySelector("div.fullcalendarjs");
+                // let ele = document.getElementById('calendar')
+                // ele.clear()
                // $(ele).fullCalendar('renderEvents');
-                $(ele).fullCalendar('renderEvents',this.events, true);
+               $(ele).fullCalendar('refetchEvents');
+                $(ele).fullCalendar('renderEvents',this.events,true);
+                console.log(this.events.filter((e)=>e))
+
+
+        //    if(this.eventsRendered){
+        //         //Add events to calendar// ele.clear()
                 
-               this.eventsRendered = true;
-           }
+        //         let ele = this.template.querySelector("div.fullcalendarjs");
+        //         // let ele = document.getElementById('calendar')
+        //         // ele.clear()
+        //        // $(ele).fullCalendar('renderEvents');
+        //        $(ele).fullCalendar('refetchEvents');
+        //         $(ele).fullCalendar('renderEvents',this.events,true);
+        //         console.log(this.events.filter((e)=>e))
+        //        this.eventsRendered = true;
+        //    }
+        
         }else if(error){
             this.events = [];
             this.error = 'No events are found';
@@ -196,10 +155,6 @@ this.selectedProgramType=event.target.value
         }
    }
  
-/*connectedCallback()
-{
-    this.fectPrograms()
-}*/
 
    /**
     * Load the fullcalendar.io in this lifecycle hook method
@@ -230,10 +185,20 @@ this.selectedProgramType=event.target.value
         });
         });
    }
+//    document.addEventListener('DOMContentLoaded', function() {
+//     var calendarEl = document.getElementById('calendar');
+  
+//     var calendar = new Calendar(calendarEl, {
+//       plugins: [ dayGridPlugin ]
+//     });
+  
+//     calendar.render();
+//   });
+  
 
     initialiseFullCalendarJs() {
-        const ele = this.template.querySelector("div.fullcalendarjs");
-        const modal = this.template.querySelector('div.modalclass');
+        let ele = this.template.querySelector("div.fullcalendarjs");
+        let modal = this.template.querySelector('div.modalclass');
         console.log('lll',FullCalendar);
 
         var self = this;
@@ -257,7 +222,7 @@ this.selectedProgramType=event.target.value
                 right: "month,agendaWeek,agendaDay",
             },
             defaultDate: new Date(), // default day is today - to show the current date
-            defaultView : 'agendaWeek', //To display the default view - as of now it is set to week view
+            defaultView : 'month', //To display the default view - as of now it is set to week view
             navLinks: true, // can click day/week names to navigate views
             // editable: true, // To move the events on calendar - TODO 
             selectable: true, //To select the period of time
@@ -293,9 +258,7 @@ this.selectedProgramType=event.target.value
         //TODO- you need to add your logic here.
         this.template.querySelectorAll('lightning-input').forEach(ele => {
            console.log('ele',ele)
-        /*if(ele.name === 'FacultysName'){
-            this.title = ele.value;
-        }*/
+        
            if(ele.name === 'ProgramDate'){
                 this.startDate = ele.value.includes('.000Z') ? ele.value : ele.value + '.000Z';
             }
@@ -306,19 +269,13 @@ this.selectedProgramType=event.target.value
                this.Email = ele.value; 
                console.log(' this.Email',this.Email)
             }
-            // if(ele.name === 'course'){
-            //    this.course = ele.value; 
-            //    console.log(' this.course',this.course)
-            // }
+            
 
-        const course=this.template.querySelector('.course')
+        let course=this.template.querySelector('.course')
         console.log('course',course.value)
                 this.CourseId =course.value; 
 
-        //          const contact=this.template.querySelector('.contact')
-        // console.log('contact',contact.value)
-        //         this.ContactId =contact.value; 
-            
+       
         });
        
         //format as per fullcalendar event object to create and render
@@ -331,7 +288,7 @@ this.selectedProgramType=event.target.value
         //Server call to create the event
         createEvent({'event' : JSON.stringify(newevent)})
         .then( result => {
-            const ele = this.template.querySelector("div.fullcalendarjs");
+            let ele = this.template.querySelector("div.fullcalendarjs");
 
             //To populate the event on fullcalendar object
             //Id should be unique and useful to remove the event from UI - calendar
@@ -375,7 +332,7 @@ this.selectedProgramType=event.target.value
         deleteEvent({'eventid' : eventid})
         .then( result => {
             console.log(result);
-            const ele = this.template.querySelector("div.fullcalendarjs");
+            let ele = this.template.querySelector("div.fullcalendarjs");
             console.log(eventid);
             $(ele).fullCalendar( 'removeEvents', [eventid] );
 
@@ -408,11 +365,26 @@ this.selectedProgramType=event.target.value
      */
     showNotification(title, message, variant) {
         console.log('enter');
-        const evt = new ShowToastEvent({
+        let evt = new ShowToastEvent({
             title: title,
             message: message,
             variant: variant,
         });
         this.dispatchEvent(evt);
+    }
+
+    handleEventClick(event) {
+        // Get the record Id from the event data
+        const recordId = event.detail.event.extendedProps.recordId;
+
+        // Navigate to the record page
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: recordId,
+                objectApiName: 'Program__c', // Replace with your object API name
+                actionName: 'view'
+            }
+        });
     }
 }
